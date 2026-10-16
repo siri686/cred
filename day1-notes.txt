@@ -1,0 +1,7 @@
+Data Engineering - Day 1
+
+1. Installed Git
+2. Configured Git username and email
+3. Created a GitHub repository
+4. Initialized a local repository
+5. Pushed my first commit to GitHub
