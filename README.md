@@ -2,7 +2,7 @@
 
 ## Objective
 
-I completed my introduction and worked on the assigned Day 1 and Day 2 tasks. I practiced Git and GitHub fundamentals, configured PostgreSQL, and performed basic SQL queries.
+I worked on the assigned Day 1 and Day 2 tasks. I practiced Git and GitHub fundamentals, configured PostgreSQL, and performed basic SQL queries.
 
 ## Project Structure
 
@@ -39,13 +39,6 @@ Combines employee and department information.
 
 ### 3. Aggregate Query (GROUP BY)
 Counts employees and calculates the average salary for each department.
-
-## How to Run
-
-```bash
-psql -U postgres -d training_db -f day1.sql
-psql -U postgres -d training_db -f day2.sql
-```
 
 ## Output
 
