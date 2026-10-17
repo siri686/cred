@@ -24,7 +24,7 @@ WEEK1/
 
 1. Configured Git and GitHub SSH.
 2. Practiced repository cloning, branching, and pull requests.
-3. Installed PostgreSQL and created the `training_db` database.
+3. Installed PostgreSQL and created the `company_db` database.
 4. Created an `employees` table.
 5. Practiced SQL queries to retrieve and analyze data.
 6. Completed the pull request and merge workflow.
