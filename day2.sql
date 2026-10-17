@@ -1,5 +1,6 @@
-SELECT * FROM employees;
-SELECT * FROM departments;
+SELECT employee_name, salary
+FROM employees
+WHERE salary > 50000;
 
 SELECT
     e.employee_name,
