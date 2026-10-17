@@ -9,7 +9,6 @@ I worked on the assigned Day 1 and Day 2 tasks. I practiced Git and GitHub funda
 ```text
 WEEK1/
 │── README.md
-│── day1-notes.txt
 │── day1.sql
 │── day2.sql
 ```
