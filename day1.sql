@@ -1,4 +1,16 @@
--- 1. Create tables
+SELECT version();
+SELECT current_database();
+
+
+-- Day 1: PostgreSQL database and SQL practice
+
+-- 1. Create departments first
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- 2. Create employees with a foreign key
 CREATE TABLE employees (
     employee_id INT PRIMARY KEY,
     employee_name VARCHAR(100) NOT NULL,
@@ -6,12 +18,14 @@ CREATE TABLE employees (
     salary NUMERIC(10, 2) CHECK (salary >= 0)
 );
 
-CREATE TABLE departments (
-    department_id INT PRIMARY KEY,
-    department_name VARCHAR(100) NOT NULL UNIQUE
-);
+-- 3. Insert department records first
+INSERT INTO departments (department_id, department_name)
+VALUES
+    (10, 'Engineering'),
+    (20, 'Analytics'),
+    (30, 'Operations');
 
--- 2. Insert sample data
+-- 4. Insert employee records
 INSERT INTO employees
     (employee_id, employee_name, department_id, salary)
 VALUES
@@ -21,13 +35,6 @@ VALUES
     (4, 'Arjun', 30, 40000),
     (5, 'Neha', 20, 65000);
 
-
-INSERT INTO departments (department_id, department_name)
-VALUES
-    (10, 'Engineering'),
-    (20, 'Analytics'),
-    (30, 'Operations');
-
--- 3. Display records
-SELECT * FROM employees;
+-- 5. Display records
 SELECT * FROM departments;
+SELECT * FROM employees;
