@@ -96,8 +96,6 @@ Normalization helps reduce unnecessary data duplication and maintain data consis
 
 The ER diagram represents the relationships between the students, courses, and enrollments tables.
 
-![College Enrollment ER Diagram](diagrams/day3-schema.png)
-
 **Diagram location:** `diagrams/day3-schema.png`
 
 ## Day 4: Indexes, Query Performance, and Redis
