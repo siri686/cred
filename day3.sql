@@ -9,7 +9,7 @@ CREATE TABLE students (
 CREATE TABLE courses (
     course_id INTEGER PRIMARY KEY,
     course_name VARCHAR(100) NOT NULL,
-    fee NUMERIC(10, 2) NOT NULL
+    fee NUMERIC(10, 2) NOT NULL CHECK (fee >= 0)
 );
 
 -- 3. Create enrollments table
@@ -48,7 +48,22 @@ SELECT * FROM enrollments;
 SELECT * FROM courses;
 
 
--- 7. Test the schema using JOIN
+-- 1. Verify that all three tables exist
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = 'public'
+  AND table_name IN ('students', 'courses', 'enrollments')
+ORDER BY table_name;
+
+
+-- 2. Verify the number of records in each table
+SELECT
+    (SELECT COUNT(*) FROM students) AS total_students,
+    (SELECT COUNT(*) FROM courses) AS total_courses,
+    (SELECT COUNT(*) FROM enrollments) AS total_enrollments;
+
+
+-- 3. Verify student-course relationships using JOIN
 SELECT
     s.student_name,
     s.email,
@@ -61,3 +76,52 @@ JOIN enrollments AS e
 JOIN courses AS c
     ON e.course_id = c.course_id
 ORDER BY s.student_name;
+
+
+-- 4. Verify primary keys, foreign keys, and unique constraints
+SELECT
+    tc.table_name,
+    tc.constraint_name,
+    tc.constraint_type
+FROM information_schema.table_constraints AS tc
+WHERE tc.table_schema = 'public'
+  AND tc.table_name IN ('students', 'courses', 'enrollments')
+  AND tc.constraint_type IN ('PRIMARY KEY', 'FOREIGN KEY', 'UNIQUE')
+ORDER BY tc.table_name, tc.constraint_type;
+
+
+-- 5. Verify table count, row counts, foreign keys, and JOIN results in one output
+SELECT
+    (SELECT COUNT(*)
+     FROM information_schema.tables
+     WHERE table_schema = 'public'
+       AND table_name IN ('students', 'courses', 'enrollments'))
+        AS tables_verified,
+
+    (SELECT COUNT(*) FROM students)
+        AS total_students,
+
+    (SELECT COUNT(*) FROM courses)
+        AS total_courses,
+
+    (SELECT COUNT(*) FROM enrollments)
+        AS total_enrollments,
+
+    (SELECT COUNT(*)
+     FROM information_schema.table_constraints
+     WHERE constraint_schema = 'public'
+       AND table_name = 'enrollments'
+       AND constraint_type = 'FOREIGN KEY')
+        AS foreign_keys_verified,
+
+    (SELECT COUNT(*)
+     FROM students AS s
+     JOIN enrollments AS e ON s.student_id = e.student_id
+     JOIN courses AS c ON e.course_id = c.course_id)
+        AS join_rows_verified;
+
+
+-- 6. Test the CHECK constraint (expected to fail because fee is negative)
+-- Run separately; do not expect this statement to succeed.
+INSERT INTO courses (course_id, course_name, fee)
+VALUES (999, 'Invalid Fee Test', -100);
