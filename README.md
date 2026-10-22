@@ -104,4 +104,4 @@ cred/
 
 ## Summary
 
-During the first three days, I practiced Git/GitHub workflows, PostgreSQL setup, SQL querying, relational schema design, database constraints, normalization, and EDuring the first three days, I practiced Git/GitHub workflows, PostgreSQL setup, SQL querying, relational schema design, database constraints, normalization, and ER diagram creation.R diagram creation.
+During the first three days, I practiced Git/GitHub workflows, PostgreSQL setup, SQL querying, relational schema design, database constraints, normalization, and ER diagram creation.
