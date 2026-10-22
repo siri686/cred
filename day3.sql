@@ -9,7 +9,7 @@ CREATE TABLE students (
 CREATE TABLE courses (
     course_id INTEGER PRIMARY KEY,
     course_name VARCHAR(100) NOT NULL,
-    fee NUMERIC(10, 2) NOT NULL
+    fee NUMERIC(10, 2) NOT NULL CHECK (fee >= 0)
 );
 
 -- 3. Create enrollments table
